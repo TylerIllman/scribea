@@ -2,6 +2,7 @@ import Link from "next/link";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
     return (
@@ -13,7 +14,7 @@ const Navbar = () => {
                     </Link>
 
                     <div className="hidden items-center space-x-4 sm:flex">
-                        <div>
+                        <>
                             <Link
                                 className={buttonVariants({
                                     variant: "ghost",
@@ -41,7 +42,7 @@ const Navbar = () => {
                                 Get Started{" "}
                                 <ArrowRight className="ml-2 h-5 w-5" />
                             </Link>
-                        </div>
+                        </>
                     </div>
                 </div>
             </MaxWidthWrapper>

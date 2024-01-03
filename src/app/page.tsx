@@ -4,10 +4,12 @@ import { cn } from "./lib/utills";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
     return (
         <>
+            <Navbar />
             <MaxWidthWrapper
                 className={cn(
                     "mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center text-center"
@@ -18,7 +20,7 @@ export default function Home() {
                         Scribea is coming soon!
                     </p>
                 </div>
-                <h1 className="max-w-4xl tex-t5xl font-bold md:text-6xl lg:text-8xl">
+                <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-8xl">
                     Chat with your{" "}
                     <span className="text-blue-600">documents</span> in seconds.
                 </h1>
