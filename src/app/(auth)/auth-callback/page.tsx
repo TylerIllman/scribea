@@ -7,7 +7,7 @@ const Page = async () => {
     const searchParams = useSearchParams();
     const origin = searchParams.get("origin");
 
-    const { data } = trpc.test.useQuery();
+    const {} = trpc.post;
 };
 
 export default Page;
