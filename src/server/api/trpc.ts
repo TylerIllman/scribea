@@ -8,6 +8,7 @@
  */
 import { currentUser } from "@clerk/nextjs";
 import { TRPCError, initTRPC } from "@trpc/server";
+import { User } from "lucide-react";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
@@ -82,10 +83,26 @@ export const publicProcedure = t.procedure;
 
 
 /** Reusable middleware that enforces users are logged in before running the procedure. */
-const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.user?.id) {
+const enforceUserIsAuthed = t.middleware(async ({ ctx, next }) => {
+  if (!ctx.user?.id || !ctx.user.emailAddresses[0]?.emailAddress) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
+
+  const dbUser = await ctx.db.user.findFirst({
+    where: {
+      id: ctx.user.id,
+    }
+  })
+
+  if (!dbUser) {
+    await db.user.create({
+      data: {
+        id: ctx.user.id,
+        email: ctx.user.emailAddresses[0]?.emailAddress,
+      }
+    })
+  }
+
   return next({
     ctx: {
       // infers the `session` as non-nullable
