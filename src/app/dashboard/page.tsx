@@ -1,6 +1,7 @@
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { db } from "~/server/db";
+import Dashboard from "../components/Dashboard";
 
 export default async function Page() {
   const user = await currentUser();
@@ -15,5 +16,5 @@ export default async function Page() {
 
   if (!dbUser) redirect("/auth-callback?origin=/dashboard");
 
-  return <div>Dashboard</div>;
+  return <Dashboard />;
 }
