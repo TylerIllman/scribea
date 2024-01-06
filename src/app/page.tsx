@@ -9,7 +9,6 @@ import { buttonVariants } from "~/components/ui/button";
 export default function Home() {
   return (
     <>
-      <Navbar />
       <MaxWidthWrapper
         className={cn(
           "mb-12 mt-28 flex flex-col items-center justify-center text-center sm:mt-40",

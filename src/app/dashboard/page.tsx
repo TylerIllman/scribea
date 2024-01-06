@@ -6,7 +6,12 @@ import Dashboard from "../components/Dashboard";
 export default async function Page() {
   const user = await currentUser();
 
-  if (!user || !user.id) redirect("/auth-callback?origin=/dashboard");
+  console.log("IN dashboard parent page");
+
+  if (!user || !user.id) {
+    console.log("QWHERQQWERQWER");
+    redirect("/auth-callback?origin=/dashboard");
+  }
 
   const dbUser = await db.user.findFirst({
     where: {
