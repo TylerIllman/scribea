@@ -6,6 +6,8 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 import { useToast } from "~/components/ui/use-toast";
 
+import { useResizeDetector } from "react-resize-detector";
+
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 interface PdfRendererProps {
@@ -15,6 +17,8 @@ interface PdfRendererProps {
 const PdfRenderer = ({ url }: PdfRendererProps) => {
   const { toast } = useToast();
 
+  const { width, ref } = useResizeDetector();
+
   return (
     <div className="flex w-full flex-col items-center rounded-md bg-white shadow">
       <div className="flex h-14 w-full items-center justify-between border-b border-zinc-200 px-2">
@@ -22,7 +26,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
       </div>
 
       <div className="max-h-screen w-full flex-1">
-        <div>
+        <div ref={ref}>
           <Document
             loading={
               <div className="flex justify-center">
@@ -39,7 +43,7 @@ const PdfRenderer = ({ url }: PdfRendererProps) => {
             file={url}
             className="max-h-full"
           >
-            <Page pageNumber={1} />
+            <Page width={width ? width : 1} pageNumber={1} />
           </Document>
         </div>
       </div>
