@@ -6,11 +6,25 @@ import { Button } from "~/components/ui/button";
 import Dropzone from "react-dropzone";
 import { Cloud, File } from "lucide-react";
 import { Progress } from "~/components/ui/progress";
-import { clearInterval } from "timers";
+import { useUploadThing } from "~/lib/uploadthing";
+import { useToast } from "~/components/ui/use-toast";
+import { api } from "~/trpc/react";
+import { useRouter } from "next/navigation";
 
 const UploadDropzone = () => {
   const [isUploading, setIsUploading] = useState<boolean>(true);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
+  const router = useRouter();
+  const { toast } = useToast();
+  const { startUpload } = useUploadThing("PdfUploader");
+
+  const { mutate: startPolling } = api.file.getFile.useMutation({
+    onSuccess: (file) => {
+      router.push(`/dashboard/${file.id}`);
+    },
+    retry: true,
+    retryDelay: 500,
+  });
 
   const startSimulatedProgress = () => {
     setUploadProgress(0);
@@ -31,15 +45,37 @@ const UploadDropzone = () => {
   return (
     <Dropzone
       multiple={false}
-      onDrop={async (acceptedFiles) => {
+      onDrop={async (acceptedFile) => {
         setIsUploading(true);
 
         const progressInterval = startSimulatedProgress();
 
-        await new Promise((resolve) => setTimeout(resolve, 20000));
+        const res = await startUpload(acceptedFile);
+
+        if (!res) {
+          return toast({
+            title: "Something went wrong",
+            description: "Please try again later.",
+            variant: "destructive",
+          });
+        }
+
+        const [fileResponse] = res;
+
+        const key = fileResponse?.key;
+
+        if (!key) {
+          return toast({
+            title: "Something went wrong",
+            description: "Please try again later.",
+            variant: "destructive",
+          });
+        }
 
         clearInterval(progressInterval);
         setUploadProgress(100);
+
+        startPolling({ key });
       }}
     >
       {({ getRootProps, getInputProps, acceptedFiles }) => (
@@ -80,6 +116,13 @@ const UploadDropzone = () => {
                   />
                 </div>
               ) : null}
+
+              <input
+                {...getInputProps}
+                type="file"
+                id="dropzone-file"
+                className="hidden"
+              />
             </label>
           </div>
         </div>

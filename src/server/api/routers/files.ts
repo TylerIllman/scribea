@@ -36,5 +36,19 @@ export const filesRouter = createTRPCRouter({
 
         return file
     }),
+    getFile: protectedProcedure.input(z.object({key: z.string()})).mutation(async ({ctx,input}) => {
+        const userId = ctx.user.id
+
+        const file = await db.file.findFirst({
+            where: {
+                key: input.key,
+                userId,
+            },
+        })
+
+        if (!file) throw new TRPCError({code:"NOT_FOUND", message: "File not found"})
+
+        return file
+    }),
 });
 
