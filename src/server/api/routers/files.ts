@@ -50,5 +50,17 @@ export const filesRouter = createTRPCRouter({
 
         return file
     }),
+    getFileUploadStatus: protectedProcedure.input(z.object({fileId: z.string()})).query(async ({ctx, input}) => { 
+        const file = await db.file.findFirst({
+            where: {
+                id: input.fileId,
+                userId: ctx.user.id
+            }
+        })
+
+        if (!file) return {status: "PENDING" as const}   
+        
+        return {status: file.uploadStatus}
+    }),
 });
 

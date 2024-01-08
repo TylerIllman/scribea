@@ -1,6 +1,6 @@
 import { currentUser, useUser } from "@clerk/nextjs";
 import { notFound, redirect } from "next/navigation";
-import ChatWrapper from "~/app/components/ChatWrapper";
+import ChatWrapper from "~/app/components/chat/ChatWrapper";
 import PdfRenderer from "~/app/components/PdfRenderer";
 import { db } from "~/server/db";
 
@@ -38,7 +38,7 @@ const Page = async ({ params }: FileChatPageProps) => {
 
         {/* Chat Window */}
         <div className="flex-[0.75] shrink-0 border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0">
-          <ChatWrapper />
+          <ChatWrapper fileId={fileid} />
         </div>
       </div>
     </div>
