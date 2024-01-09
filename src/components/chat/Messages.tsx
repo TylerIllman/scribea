@@ -3,12 +3,16 @@ import Skeleton from "react-loading-skeleton";
 import { INFINITE_QUERY_LIMIT } from "~/config/infinit-query";
 import { api } from "~/trpc/react";
 import Message from "./Message";
+import { ChatContext } from "./ChatContext";
+import { useContext } from "react";
 
 interface MessagesProps {
   fileId: string;
 }
 
 const Messages = ({ fileId }: MessagesProps) => {
+  const { isLoading: isAiThinking } = useContext(ChatContext);
+
   const { data, isLoading, fetchNextPage } =
     api.file.getFileMessages.useInfiniteQuery(
       {
@@ -35,7 +39,7 @@ const Messages = ({ fileId }: MessagesProps) => {
   };
 
   const combindedMessages = [
-    ...(true ? [loadingMessage] : []),
+    ...(isAiThinking ? [loadingMessage] : []),
     ...(messages ?? []),
   ];
 

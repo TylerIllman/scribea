@@ -3,6 +3,8 @@ import { ExtendedMessage } from "~/types/message";
 import { Icons } from "../icons";
 import ReactMarkDown from "react-markdown";
 import { format } from "date-fns";
+import { useContext } from "react";
+import { ChatContext } from "./ChatContext";
 
 interface MessageProps {
   message: ExtendedMessage;
@@ -10,6 +12,8 @@ interface MessageProps {
 }
 
 const Message = ({ message, isNextMessageSamePerson }: MessageProps) => {
+  const { isLoading: isAiThinking } = useContext(ChatContext);
+
   return (
     <div
       className={cn("flex items-end", { "justify-end": message.isUserMessage })}
