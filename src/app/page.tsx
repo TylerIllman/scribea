@@ -1,8 +1,8 @@
 import Link from "next/link";
-import MaxWidthWrapper from "./components/MaxWidthWrapper";
+import MaxWidthWrapper from "../components/MaxWidthWrapper";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 import { cn } from "~/lib/utils";
 import { buttonVariants } from "~/components/ui/button";
 

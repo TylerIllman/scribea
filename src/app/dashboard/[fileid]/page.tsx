@@ -1,7 +1,7 @@
 import { currentUser, useUser } from "@clerk/nextjs";
 import { notFound, redirect } from "next/navigation";
-import ChatWrapper from "~/app/components/chat/ChatWrapper";
-import PdfRenderer from "~/app/components/PdfRenderer";
+import ChatWrapper from "~/components/chat/ChatWrapper";
+import PdfRenderer from "~/components/PdfRenderer";
 import { db } from "~/server/db";
 
 interface FileChatPageProps {

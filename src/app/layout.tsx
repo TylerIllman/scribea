@@ -9,7 +9,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "react-loading-skeleton/dist/skeleton.css";
 import "simplebar-react/dist/simplebar.min.css";
 
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 import { cn } from "~/lib/utils";
 import { Toaster } from "~/components/ui/toaster";
 
