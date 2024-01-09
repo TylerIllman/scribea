@@ -1,23 +1,22 @@
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { NextRequest } from "next/server";
-import { SendMessageValidator } from "~/lib/validators/SendMessageValidator";
-import { db } from "~/server/db";
-import { pinecone } from "~/lib/pinecone";
-import { PineconeStore } from "langchain/vectorstores/pinecone";
-import { openai } from "~/lib/openai";
-
-import {OpenAIStream, StreamingTextResponse} from "ai"
-import { currentUser } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs"
+import { OpenAIEmbeddings } from "@langchain/openai"
+import { PineconeStore } from "@langchain/community/vectorstores/pinecone"
+import { NextRequest } from "next/server"
+import { pinecone } from "~/lib/pinecone"
+import { SendMessageValidator } from "~/lib/validators/SendMessageValidator"
+import { db } from "~/server/db"
+import { openai } from "~/lib/openai"
+import { OpenAIStream, StreamingTextResponse } from "ai"
 
 export const POST = async (req: NextRequest) => {
     //Endpoint for asking questions to PDF
 
-    console.log("IN THE MESSAGE ROUTE")
-    console.log("HERE IS THE REQ: ", req)
+    console.log("IN THE *TEST* MESSAGE ROUTE")
 
     const body = await req.json()
+    console.log("BODY AFTER AWAIT: ", body)
 
-    const user = await currentUser()
+    const user = await currentUser(); 
     const userId = user?.id
 
     if (!userId) {
@@ -25,6 +24,8 @@ export const POST = async (req: NextRequest) => {
     }
 
     const { fileId, message } = SendMessageValidator.parse(body)
+
+    console.log("AFTER BODY PARSE: ",fileId, message)
 
     const file = await db.file.findFirst({
         where: {
@@ -102,6 +103,7 @@ export const POST = async (req: NextRequest) => {
             },
           ],
     })
+    
 
     const stream = OpenAIStream(response, {
         async onCompletion(completion) {
