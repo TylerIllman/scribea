@@ -82,4 +82,4 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
   },
 );
 
-export default Message;
+Message.displayName = "Message";

@@ -33,7 +33,7 @@ export const authRouter = createTRPCRouter({
 
   createStripeSession: protectedProcedure.mutation( async ({ctx}) => {
     const userId = ctx.user.id
-    const billingUrl = absoluteUrl("/dashboard/billing")
+    const billingUrl = absoluteUrl("/dashboard/managebilling")
 
     if(!userId) throw new TRPCError({code: "UNAUTHORIZED"})
 
