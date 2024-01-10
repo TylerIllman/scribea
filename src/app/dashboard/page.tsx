@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { db } from "~/server/db";
 import Dashboard from "../../components/Dashboard";
 import { getUserSubscriptionPlan } from "~/lib/stripe";
+import MaxWidthWrapper from "~/components/MaxWidthWrapper";
 
 export default async function Page() {
   const user = await currentUser();
@@ -21,5 +22,9 @@ export default async function Page() {
 
   const subscriptionPlan = await getUserSubscriptionPlan();
 
-  return <Dashboard subscriptionPlan={subscriptionPlan} />;
+  return (
+    <MaxWidthWrapper>
+      <Dashboard subscriptionPlan={subscriptionPlan} />;
+    </MaxWidthWrapper>
+  );
 }
