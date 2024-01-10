@@ -21,7 +21,7 @@ const inter = Inter({
 export const metadata = {
   title: "Scribea",
   description: "Chat with your documents in seconds.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/icon.svg" }],
 };
 
 export default function RootLayout({
