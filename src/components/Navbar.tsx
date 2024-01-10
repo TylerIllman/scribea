@@ -5,6 +5,7 @@ import { UserButton, currentUser, useUser } from "@clerk/nextjs";
 import { buttonVariants } from "~/components/ui/button";
 import { set } from "zod";
 import { useState } from "react";
+import MobileNav from "./MobileNav";
 
 const Navbar = async () => {
   const user = await currentUser();
@@ -17,37 +18,62 @@ const Navbar = async () => {
             Scribea.
           </Link>
 
-          <div className="hidden items-center space-x-4 sm:flex">
-            <>
-              <Link
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "sm",
-                })}
-                href="/pricing"
-              >
-                Pricing
-              </Link>
+          <MobileNav isAuth={!!user} />
 
-              <Link
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "sm",
-                })}
-                href="/sign-in"
-              >
-                Sign in
-              </Link>
-              <Link
-                className={buttonVariants({
-                  size: "sm",
-                })}
-                href="/sign-up"
-              >
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <UserButton />
-            </>
+          <div className="hidden items-center space-x-4 sm:flex">
+            {!user ? (
+              <>
+                <Link
+                  className={buttonVariants({
+                    variant: "ghost",
+                    size: "sm",
+                  })}
+                  href="/pricing"
+                >
+                  Pricing
+                </Link>
+
+                <Link
+                  className={buttonVariants({
+                    variant: "ghost",
+                    size: "sm",
+                  })}
+                  href="/sign-in"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  className={buttonVariants({
+                    size: "sm",
+                  })}
+                  href="/sign-up"
+                >
+                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  className={buttonVariants({
+                    variant: "ghost",
+                    size: "sm",
+                  })}
+                  href="/dashboard/managebilling"
+                >
+                  Billing
+                </Link>
+                <Link
+                  className={buttonVariants({
+                    variant: "ghost",
+                    size: "sm",
+                  })}
+                  href="/dashboard"
+                >
+                  Dashboard
+                </Link>
+                <UserButton />
+              </>
+            )}
           </div>
         </div>
       </MaxWidthWrapper>
