@@ -33,7 +33,8 @@ export const authRouter = createTRPCRouter({
 
   createStripeSession: protectedProcedure.mutation( async ({ctx}) => {
     const userId = ctx.user.id
-    const billingUrl = absoluteUrl("/dashboard/managebilling")
+    // const billingUrl = absoluteUrl("/dashboard/managebilling")
+    const billingUrl = "https://scribea.tyleri.dev/dashboard/managebilling"
 
     if(!userId) throw new TRPCError({code: "UNAUTHORIZED"})
 

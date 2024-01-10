@@ -24,7 +24,7 @@ export default async function Page() {
 
   return (
     <MaxWidthWrapper>
-      <Dashboard subscriptionPlan={subscriptionPlan} />;
+      <Dashboard subscriptionPlan={subscriptionPlan} />
     </MaxWidthWrapper>
   );
 }
