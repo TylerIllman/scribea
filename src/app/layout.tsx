@@ -10,7 +10,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "simplebar-react/dist/simplebar.min.css";
 
 import Navbar from "../components/Navbar";
-import { cn } from "~/lib/utils";
+import { cn, constructMetadata } from "~/lib/utils";
 import { Toaster } from "~/components/ui/toaster";
 
 const inter = Inter({
@@ -18,11 +18,7 @@ const inter = Inter({
   variable: "--font-sans",
 });
 
-export const metadata = {
-  title: "Scribea",
-  description: "Chat with your documents in seconds.",
-  icons: [{ rel: "icon", url: "/icon.svg" }],
-};
+export const metadata = constructMetadata();
 
 export default function RootLayout({
   children,
