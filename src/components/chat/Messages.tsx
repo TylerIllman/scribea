@@ -29,7 +29,7 @@ const Messages = ({ fileId }: MessagesProps) => {
   const messages = data?.pages.flatMap((page) => page.messages);
 
   const loadingMessage = {
-    createdAt: new Date().toISOString(),
+    createdAt: new Date(), //POTENTIAL BUG: .toISOString() in tutorial he set it as an ISO string. I removed due to type error
     id: "loading-message",
     isUserMessage: false,
     text: (
