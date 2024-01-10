@@ -3,7 +3,7 @@ import { AppRouter } from '~/server/api/root'
 
 type RouterOutput = inferRouterOutputs<AppRouter>
 
-type Messages = RouterOutput['getFileMessages']['messages']
+type Messages = RouterOutput["file"]['getFileMessages']['messages']
 
 type OmitText = Omit<Messages[number], 'text'>
 
