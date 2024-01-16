@@ -1,5 +1,5 @@
 # 📝 Scribea
-Scribea is a unique platform that focuses on providing a seamless and efficient writing experience. It's a simple and engaging platform inspired by the concept of Google Docs but with a more user-friendly and intuitive approach.
+Scribea is a user-friendly platform that lets you interact with PDF documents in a chat-like interface. It simplifies information retrieval by providing direct responses from the document content to your questions.
 
 <p align="center">
 <img width="70%" alt="Scribea Home Page" src="https://github.com/TylerIllman/scribea/assets/124550621/25216eae-d553-4096-8651-2fbe6134b8be">
