@@ -20,13 +20,18 @@ At the core of Scribea is the document chat page, this page allows you to chat d
   <img width="70%" alt="Screenshot 2024-01-16 at 12 18 19 pm" src="https://github.com/TylerIllman/scribea/assets/124550621/ae26173b-7630-4c39-bdf5-af4d2fc869b4">
 </p>
 
+
+
 # Technical Details
 <p align="center">
   <img src="https://skillicons.dev/icons?i=nextjs,planetscale,tailwind,react,typescript,prisma" />
   <img src="https://trpc.io/img/logo.svg" width="48px" height="48px" />
+  <img src="https://chatgptaihub.com/wp-content/uploads/2023/06/ChatGPT-logo-with-color-Background.png" width="48px" height="48px" />
+  <img src="https://seeklogo.com/images/P/pinecone-icon-logo-AF8B5B7F96-seeklogo.com.png" width="48px" height="48px" />
+  <img src="https://cdn.sanity.io/images/o0o2tn5x/production/2399b991025c365aafaa6fca85d91deac801e654-1046x1046.png" width="48px" height="48px" />
 </p>
 
-Scribea utilises a modern tech stack and infrastructure including: Next.js, Planetscale, Tailwind, React, Typescript, Prisma, TRPC, OpenAI, and Pinecone.
+Scribea utilises a modern tech stack and infrastructure including: Next.js, Planetscale, Tailwind, React, Typescript, Prisma, TRPC, OpenAI, Pinecone and Clerk.
 
 ### tRPC for Type Safety
 Implementing tRPC, Scribea ensures robust type safety across its client-server communication. This choice greatly reduces the chances of bugs related to type mismatches, enhancing the overall stability of the application.
