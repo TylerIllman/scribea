@@ -1,16 +1,18 @@
-# 📝 Scribea
+<img width="1381" alt="Screenshot 2024-01-16 at 12 17 55 pm" src="https://github.com/TylerIllman/scribea/assets/124550621/11069b7b-ad0a-4adb-afd8-7e3d9d5ecd6b"># 📝 Scribea
 Scribea is a unique platform that focuses on providing a seamless and efficient writing experience. It's a simple and engaging platform inspired by the concept of Google Docs but with a more user-friendly and intuitive approach.
 
 <p align="center">
- <img alt="Scribea Home Page" src="https://github.com/YourUsername/scribea-app/assets/homepage.png" width="70%">
+<img width="70%" alt="Scribea Home Page" src="https://github.com/TylerIllman/scribea/assets/124550621/25216eae-d553-4096-8651-2fbe6134b8be">
 </p>
 
 # Features
 ### User Dashboard
 The platform allows each user to have their own dashboard. Here, all the documents they've created are displayed. This personal space serves as a hub for their writing projects and collaborations.
+<img width="70%" alt="Screenshot 2024-01-16 at 12 16 26 pm" src="https://github.com/TylerIllman/scribea/assets/124550621/b9408a03-8370-4e69-9205-d432ee6a8603">
 
 ### Document Chat Page
 At the core of Scribea is the document chat page, this page allows you to chat directly with the document as well as a document viewer.
+<img width="70%" alt="Screenshot 2024-01-16 at 12 18 19 pm" src="https://github.com/TylerIllman/scribea/assets/124550621/ae26173b-7630-4c39-bdf5-af4d2fc869b4">
 
 # Technical Details
 <p align="center">
