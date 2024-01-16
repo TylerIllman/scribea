@@ -9,14 +9,8 @@ Scribea is a unique platform that focuses on providing a seamless and efficient 
 ### User Dashboard
 The platform allows each user to have their own dashboard. Here, all the documents they've created are displayed. This personal space serves as a hub for their writing projects and collaborations.
 
-### Document Editor
-At the core of Scribea is the document editor, which presents a clean and distraction-free writing environment. It's a space where users can focus on their writing and collaborate with others in real-time.
-
-### PDF Indexing and Search
-Scribea uses Pinecone to index PDF documents, enabling efficient and accurate search across the documents. This feature allows users to quickly find the information they need within their documents.
-
-### Contextual Suggestions
-With the integration of OpenAI, Scribea provides contextual suggestions based on the content of the documents. This feature enhances the writing experience by providing relevant suggestions and corrections.
+### Document Chat Page
+At the core of Scribea is the document chat page, this page allows you to chat directly with the document as well as a document viewer.
 
 # Technical Details
 <p align="center">
@@ -41,8 +35,8 @@ Zod is employed to validate forms, an essential aspect to maintain the integrity
 ### Database Management with Prisma
 Prisma is used for efficient database management. Its role as an ORM tool simplifies database queries and schema management. Prisma's auto-generated types are particularly beneficial, enhancing the app’s type safety in harmony with tRPC’s capabilities.
 
-### OpenAI for Contextual Suggestions
-Scribea integrates OpenAI to provide contextual suggestions based on the content of the documents. This AI-powered feature enhances the writing experience by providing relevant suggestions and corrections.
+### PDF Indexing and Search
+Scribea uses Pinecone to index PDF documents, this allows Scribea to search the document for the most relative information and then provide this as context for the chat completion API.
 
-### Pinecone for PDF Indexing and Search
-Scribea uses Pinecone to index PDF documents, enabling efficient and accurate search across the documents. This feature allows users to quickly find the information they need within their documents.
+### Stripe Payments Integration
+Scribea uses Stripe to facilitate payments for the pro plan. Pro Scribea memebers are able to send larger documents.
