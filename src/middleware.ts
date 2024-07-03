@@ -1,28 +1,25 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-const isTenantRoute = createRouteMatcher([
-  "/organization-selector(.*)",
-  "/orgid/(.*)",
-]);
+const isProtectedRoute = createRouteMatcher(["/dashboard(.*)", "/forum(.*)"]);
+eimport {
+  clerkMiddleware,
+  createRouteMatcher
+} from '@clerk/nextjs/server';
 
-const isTenantAdminRoute = createRouteMatcher([
-  "/orgId/(.*)/memberships",
-  "/orgId/(.*)/domain",
+const isProtectedRoute = createRouteMatcher([
+  '/dashboard(.*)',
+  '/forum(.*)',
 ]);
 
 export default clerkMiddleware((auth, req) => {
-  // Restrict admin routes to users with specific permissions
-  if (isTenantAdminRoute(req)) {
-    auth().protect((has) => {
-      return (
-        has({ permission: "org:sys_memberships:manage" }) ||
-        has({ permission: "org:sys_domains_manage" })
-      );
-    });
-  }
-  // Restrict organization routes to signed in users
-  if (isTenantRoute(req)) auth().protect();
+  if (isProtectedRoute(req)) auth().protect();
 });
+
+export const config = {
+  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)'],
+};xport const config = {
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+};
 
 export const config = {
   matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
