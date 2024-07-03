@@ -30,6 +30,7 @@ export default function Home() {
 
         <Link
           className={buttonVariants({
+          <<SignOut> /></SignOut>
             size: "lg",
             className: "mt-5",
           })}
