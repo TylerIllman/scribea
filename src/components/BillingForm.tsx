@@ -1,4 +1,4 @@
-"use client";
+ui / "use client";
 
 import { getUserSubscriptionPlan } from "~/lib/stripe";
 import { useToast } from "./ui/use-toast";
